@@ -18,7 +18,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @interface FieldAnnotation {
-    int order() default 0;
+    String description();
 }
 
 @Retention(RetentionPolicy.RUNTIME)
@@ -41,9 +41,9 @@ import java.lang.annotation.*;
 
 @AnimalAnnotation(name = "Animal")
 public class Animal {
-    @FieldAnnotation(order = 1)
+    @FieldAnnotation(description = "Animals age")
     private int age;
-    @FieldAnnotation(order = 2)
+    @FieldAnnotation(description = "Animals name")
     private String name;
 
     public Animal(int age, String name) {
@@ -56,4 +56,23 @@ public class Animal {
         System.out.println("The animal makes a sound");
     }
 
+    @MethodAnnotation("Get age")
+    public int getAge() {
+        return age;
+    }
+
+    @MethodAnnotation("Set age")
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @MethodAnnotation("Get name")
+    public String getName() {
+        return name;
+    }
+
+    @MethodAnnotation("Set name")
+    public void setName(String name) {
+        this.name = name;
+    }
 }
